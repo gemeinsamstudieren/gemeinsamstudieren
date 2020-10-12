@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: basictest
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/users/{userId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-users-userId
+      description: 'Returns the user of the given {userId}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      parameters: []
+  /users:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+      operationId: get-users
+      description: Returns all users
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: username
+          description: ''
+        - schema:
+            type: string
+          in: query
+          name: createdAtFrom
+        - schema:
+            type: string
+          in: query
+          name: createdAtTo
+        - schema:
+            type: string
+          in: query
+          name: updatedAtFrom
+        - schema:
+            type: string
+          in: query
+          name: updatedAtTo
+    post:
+      summary: ''
+      operationId: post-users
+      responses:
+        '200':
+          description: OK
+  /questions:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-questions
+      description: Returns all questions
+      parameters:
+        - schema:
+            type: string
+            default: 'null'
+          in: query
+          name: questionId
+        - schema:
+            type: string
+            format: date-time
+          in: query
+          name: createdAtFrom
+        - schema:
+            type: string
+            format: date-time
+          in: query
+          name: createdAtTo
+        - schema:
+            type: string
+          in: query
+          name: createdBy
+          description: The creator of the questions
+        - schema:
+            type: string
+          in: query
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      x-examples:
+        example-1:
+          id: 0504e723-f588-46a5-b648-aa3f3b93fd50
+          email: test@gemeisstudieren.de
+          username: gemeinsam2020
+          firstName: Gemeinsame
+          lastName: Studieren
+          createdAt: '2020-10-12 16:17:00+02:00'
+          updatedAt: '2020-10-12 16:17:00+02:00'
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
