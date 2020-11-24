@@ -124,6 +124,15 @@ components:
         lastName:
           type: string
         createdAt:
-          type: string
+          type: object
         updatedAt:
+          type: object
+        password:
           type: string
+        token:
+          type: string
+        tokenExpiresAt:
+          type: object
+      required:
+        - id
+        - email
