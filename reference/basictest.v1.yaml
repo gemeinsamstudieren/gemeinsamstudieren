@@ -112,9 +112,10 @@ components:
           lastName: Studieren
           createdAt: '2020-10-12 16:17:00+02:00'
           updatedAt: '2020-10-12 16:17:00+02:00'
+      description: ''
       properties:
         id:
-          type: integer
+          type: string
         email:
           type: string
         username:
