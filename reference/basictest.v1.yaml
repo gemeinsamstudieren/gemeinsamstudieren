@@ -125,15 +125,45 @@ components:
         lastName:
           type: string
         createdAt:
-          type: object
+          type: string
+          format: date-time
         updatedAt:
-          type: object
+          type: string
+          format: date-time
         password:
           type: string
         token:
           type: string
         tokenExpiresAt:
-          type: object
+          type: string
       required:
         - id
         - email
+    Unit:
+      title: Unit
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        unitShorthand:
+          type: string
+        modulId:
+          type: integer
+        parentUnitId:
+          type: integer
+      x-examples:
+        example-1:
+          id: 4
+          name: Einführung in die Statistik
+          unitShorthand: LO 3
+          modulId: 30
+          parentUnitId: null
+        example-2:
+          id: 564
+          name: Mittelwerte
+          unitShorthand: LO 3.2
+          modulId: 30
+          parentUnitId: 4
+      description: ''

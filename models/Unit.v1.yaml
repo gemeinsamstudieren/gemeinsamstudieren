@@ -1,0 +1,14 @@
+title: Unit
+type: object
+x-examples:
+  example-1:
+    id: 0
+    name: string
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+    maxLength: 255
+  unitShorthand:
+    type: string
