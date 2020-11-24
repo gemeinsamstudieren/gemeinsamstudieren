@@ -114,7 +114,7 @@ components:
           updatedAt: '2020-10-12 16:17:00+02:00'
       properties:
         id:
-          type: string
+          type: integer
         email:
           type: string
         username:
