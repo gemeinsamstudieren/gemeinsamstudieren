@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: basictest
-  version: '1.0'
+  version: '0.1'
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -98,6 +98,273 @@ paths:
         - schema:
             type: string
           in: query
+  /units:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                    name:
+                      type: string
+                    unitShorthand:
+                      type: string
+                    modul:
+                      type: string
+                    parent:
+                      type:
+                        - string
+                        - 'null'
+              examples:
+                example-1:
+                  value:
+                    - uuid: 8a5ed9b7-490f-445e-91ee-208122eba4b3
+                      name: Einführung
+                      shorthand: '1'
+                      modul: 1a265919-b923-4890-b879-e79d9e0cd968
+                      parent: null
+                    - uuid: ff354df4-90da-47de-b54a-fae1bfd4323a
+                      name: Motivation
+                      shorthand: '1.1'
+                      modul: 1a265919-b923-4890-b879-e79d9e0cd968
+                      parent: 8a5ed9b7-490f-445e-91ee-208122eba4b3
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      operationId: get-units
+      description: Returns an array of 'Unit'-objects
+      security:
+        - Bearer: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: uuid
+          description: Universal unique identifier for a 'Unit'
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: Name of a 'Unit'
+        - schema:
+            type: string
+          in: query
+    post:
+      summary: ''
+      operationId: post-units
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+        - Bearer: []
+      description: Creates 'Unit'-objects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: ''
+              minItems: 1
+              uniqueItems: true
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    minLength: 1
+                  shorthand:
+                    type: string
+                    minLength: 1
+                  modul:
+                    type: string
+                    minLength: 1
+                  parent:
+                    type:
+                      - string
+                      - 'null'
+                    minLength: 1
+                required:
+                  - name
+                  - shorthand
+                  - modul
+                  - parent
+            examples: {}
+        description: ''
+    put:
+      summary: ''
+      operationId: put-units
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      description: Updates an array of 'Unit'-objects
+      security:
+        - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: ''
+              minItems: 1
+              uniqueItems: true
+              items:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  shorthand:
+                    type: string
+                    minLength: 1
+                  modul:
+                    type: string
+                    minLength: 1
+                  parent:
+                    type:
+                      - string
+                      - 'null'
+                    minLength: 1
+                required:
+                  - uuid
+                  - name
+                  - shorthand
+                  - modul
+                  - parent
+            examples:
+              example-1:
+                value:
+                  uuid: string
+                  name: string
+                  shorthand: string
+                  modul: string
+                  parent: string
+    delete:
+      summary: ''
+      operationId: delete-units
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      description: Removes an array of 'Unit'-objects
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: uuid
+  '/units/{uuid}':
+    parameters:
+      - schema:
+          type: string
+        name: uuid
+        in: path
+        description: Univeral Unique Identifier for a 'Unit'
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  unitShorthand:
+                    type: string
+                    minLength: 1
+                  modul:
+                    type: string
+                  parent:
+                    type:
+                      - string
+                      - 'null'
+                required:
+                  - uuid
+                  - name
+                  - unitShorthand
+                  - modul
+              examples:
+                example-1:
+                  value:
+                    uuid: 8a5ed9b7-490f-445e-91ee-208122eba4b3
+                    name: Einführung
+                    shorthand: '1'
+                    modul: 1a265919-b923-4890-b879-e79d9e0cd968
+                    parent: null
+      operationId: get-units-uuid
+      description: Returns a single 'Unit'
+      security:
+        - Bearer: []
 components:
   schemas:
     User:
@@ -115,7 +382,7 @@ components:
       description: ''
       properties:
         id:
-          type: string
+          type: integer
         email:
           type: string
         username:
@@ -145,23 +412,23 @@ components:
       x-examples:
         example-1:
           id: 5
-          uid: 8a5ed9b7-490f-445e-91ee-208122eba4b3
+          uuid: 8a5ed9b7-490f-445e-91ee-208122eba4b3
           name: Einführung
-          unitShorthand: '1'
-          modulId: 4
-          parentUnitId: null
+          shorthand: '1'
+          modul: 1a265919-b923-4890-b879-e79d9e0cd968
+          parent: null
         example-2:
           id: 25
           uuid: ff354df4-90da-47de-b54a-fae1bfd4323a
           name: Motivation
           shorthand: '1.1'
-          modulId: 4
-          parentUnitId: 5
+          modul: 1a265919-b923-4890-b879-e79d9e0cd968
+          parent: 8a5ed9b7-490f-445e-91ee-208122eba4b3
       description: The model of a 'Unit'.
       properties:
         id:
-          type: integer
           description: Primary key of a 'Unit'
+          type: number
         uuid:
           type: string
           description: Universally Unique Identifier for a 'Unit'
@@ -171,9 +438,24 @@ components:
         shorthand:
           type: string
           description: Short presentation of a 'Unit'
-        modulId:
-          type: integer
+        modul:
           description: Contains the id of the referenced 'Modul'
-        parentUnitId:
-          type: integer
+          type: string
+        parent:
           description: Contains the id of the parent 'Unit'
+          type:
+            - string
+            - 'null'
+        createdAt:
+          type: string
+          description: Contains datetime of 'Unit'-creation
+        updatedAt:
+          type: string
+          description: Contains datetime of 'Unit'-update
+  securitySchemes:
+    Bearer:
+      name: token
+      type: apiKey
+      in: query
+security:
+  - Bearer: []
