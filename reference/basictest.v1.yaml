@@ -18,7 +18,7 @@ paths:
       tags: []
       responses: {}
       operationId: get-users-userId
-      description: 'Returns the user of the given {userId}'
+      description: 'Shows the user of the given {userId}'
       requestBody:
         content:
           application/json:
@@ -26,6 +26,20 @@ paths:
               type: object
               properties: {}
       parameters: []
+    put:
+      summary: ''
+      operationId: put-users-userId
+      responses:
+        '200':
+          description: OK
+      description: Updates one user
+    delete:
+      summary: ''
+      operationId: delete-users-userId
+      responses:
+        '200':
+          description: OK
+      description: Delete one user
   /users:
     get:
       summary: Your GET endpoint
@@ -67,6 +81,7 @@ paths:
       responses:
         '200':
           description: OK
+      description: Stores/Adds a user
   /questions:
     get:
       summary: Your GET endpoint
@@ -98,6 +113,32 @@ paths:
         - schema:
             type: string
           in: query
+  '/users/{userId}/edit':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-users-userId-edit
+      description: |-
+        Get the form for editing
+
+        ## TODO: check if we need do active disable this
+  /users/create:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-users-create
+      description: |-
+        Get the create form
+
+        ## TODO: Need to disable this as well?
 components:
   schemas:
     User:
