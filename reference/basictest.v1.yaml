@@ -142,28 +142,38 @@ components:
     Unit:
       title: Unit
       type: object
+      x-examples:
+        example-1:
+          id: 5
+          uid: 8a5ed9b7-490f-445e-91ee-208122eba4b3
+          name: Einführung
+          unitShorthand: '1'
+          modulId: 4
+          parentUnitId: null
+        example-2:
+          id: 25
+          uuid: ff354df4-90da-47de-b54a-fae1bfd4323a
+          name: Motivation
+          shorthand: '1.1'
+          modulId: 4
+          parentUnitId: 5
+      description: The model of a 'Unit'.
       properties:
         id:
           type: integer
+          description: Primary key of a 'Unit'
+        uuid:
+          type: string
+          description: Universally Unique Identifier for a 'Unit'
         name:
           type: string
-        unitShorthand:
+          description: Name of a 'Unit'
+        shorthand:
           type: string
+          description: Short presentation of a 'Unit'
         modulId:
           type: integer
+          description: Contains the id of the referenced 'Modul'
         parentUnitId:
           type: integer
-      x-examples:
-        example-1:
-          id: 4
-          name: Einführung in die Statistik
-          unitShorthand: LO 3
-          modulId: 30
-          parentUnitId: null
-        example-2:
-          id: 564
-          name: Mittelwerte
-          unitShorthand: LO 3.2
-          modulId: 30
-          parentUnitId: 4
-      description: ''
+          description: Contains the id of the parent 'Unit'
